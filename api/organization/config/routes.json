@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/organizations/findfirst",
+      "handler": "organization.findFirst",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/organizations/count",
       "handler": "organization.count",
       "config": {
@@ -33,11 +41,27 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/organizations/users",
+      "handler": "organization.createOrganizationUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/organizations/users",
+      "handler": "organization.deleteOrganizationUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/organizations/:id",
       "handler": "organization.update",
       "config": {
-        "policies": []
+        "policies": ["isOrganizationOwner"]
       }
     },
     {
@@ -45,7 +69,7 @@
       "path": "/organizations/:id",
       "handler": "organization.delete",
       "config": {
-        "policies": []
+        "policies": ["isOrganizationOwner"]
       }
     }
   ]
