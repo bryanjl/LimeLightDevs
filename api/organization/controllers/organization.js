@@ -3,8 +3,13 @@
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
-    async create(ctx) {       
-        ctx.request.body.users_permissions_users = ctx.state.user;
+    async create(ctx) {  
+        //error with saving relational data in Mongo
+        //hacked together solution :(     
+        let arr = [];
+        arr.push(ctx.state.user);
+
+        ctx.request.body.users_permissions_users = arr;
         ctx.request.body.owner = ctx.state.user.email;
         let organization = await strapi.services.organization.create(ctx.request.body);
         

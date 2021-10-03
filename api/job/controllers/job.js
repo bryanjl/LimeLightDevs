@@ -10,7 +10,7 @@ module.exports = {
             return ctx.response.notFound(`Organization ${ctx.request.body.organization} not found`)
         }
 
-        let job = await strapi.services.jobs.create({
+        let job = await strapi.services.job.create({
             title: ctx.request.body.title,
             description: ctx.request.body.description,
             organization: organization,
@@ -25,6 +25,6 @@ module.exports = {
             jobs: jobsArr
         });
 
-        return sanitizeEntity(job, { model: strapi.models.jobs });
+        return sanitizeEntity(job, { model: strapi.models.job });
     }
 };
