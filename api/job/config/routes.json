@@ -29,7 +29,7 @@
       "path": "/jobs",
       "handler": "job.create",
       "config": {
-        "policies": []
+        "policies": ["isOrganizationUser"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/jobs/:id",
       "handler": "job.update",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/jobs/:id",
       "handler": "job.delete",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     }
   ]
