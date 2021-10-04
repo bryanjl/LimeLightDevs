@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "LIMELIGHT DEVS DOCUMENTATION",
+      "description": "Documentation for a simple API for consideration at Lime Light Devs",
+      "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
+      "contact": {
+        "name": "Bryan Lilly",
+        "email": "bryanjameslilly@gmail.com",
+        "url": ""
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "x-strapi-config": {
+      "path": "/",
+      "showGeneratedFiles": true,
+      "pluginsForWhichToGenerateDoc": [
+        "users-permissions"
+      ]
+    },
+    "servers": [
+      {
+        "url": "http://localhost:1337",
+        "description": "Development server"
+      },
+      {
+        "url": "YOUR_STAGING_SERVER",
+        "description": "Staging server"
+      },
+      {
+        "url": "YOUR_PRODUCTION_SERVER",
+        "description": "Production server"
+      }
+    ],
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "https://strapi.io/documentation/"
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "paths": {
+      "/jobs": {
+        "post": {
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "New job",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/job"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "job": {
+        "type:": "object",
+        "description": "",
+        "properties": {
+          "text": {
+            "required": true,
+            "description": "This is some text to add",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": [],
+    "components": {}
+  }
