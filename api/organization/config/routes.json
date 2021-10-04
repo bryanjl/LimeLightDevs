@@ -5,7 +5,17 @@
       "path": "/organizations",
       "handler": "organization.find",
       "config": {
-        "policies": []
+        "policies": [],
+        "description": "PUBLIC - Get all organizations"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/organizations/findfirst",
+      "handler": "organization.findFirst",
+      "config": {
+        "policies": [],
+        "description": "PUBLIC - Get the first record from the organization collection"
       }
     },
     {
@@ -29,7 +39,26 @@
       "path": "/organizations",
       "handler": "organization.create",
       "config": {
-        "policies": []
+        "policies": [],
+        "description": "PRIVATE - Create an orgranization - user must be logged in" 
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/organizations/users",
+      "handler": "organization.createOrganizationUser",
+      "config": {
+        "policies": [],
+        "description": "PRIVATE - A user can add themself to the organization's members(user must be logged in).  The owner of the organization can add users by supplying email in the request body"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/organizations/users",
+      "handler": "organization.deleteOrganizationUser",
+      "config": {
+        "policies": [],
+        "description": "PRIVATE - A user can remove themself from the organization's members.  The owner of the organization can remove members from the organization by supplying an email in the request body.  Owner of the organization cannot be removed from the organization's members."
       }
     },
     {
@@ -37,7 +66,8 @@
       "path": "/organizations/:id",
       "handler": "organization.update",
       "config": {
-        "policies": []
+        "policies": ["isOrganizationOwner"],
+        "description": "PUBLIC - Get an organization by ID"
       }
     },
     {
@@ -45,7 +75,8 @@
       "path": "/organizations/:id",
       "handler": "organization.delete",
       "config": {
-        "policies": []
+        "policies": ["isOrganizationOwner"],
+        "description": "PRIVATE - Delete an organization record from the collection.  User must be owner of the organization to delete"
       }
     }
   ]

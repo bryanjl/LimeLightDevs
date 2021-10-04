@@ -1,0 +1,494 @@
+{
+    "paths": {
+      "/organizations": {
+        "get": {
+          "description": "PUBLIC - Get all organizations in the collection",
+          "summary": "Get all organizations from collection",
+          "tags": [
+            "Organization"
+          ]
+        },
+        "post": {
+          "description": "PRIVATE - Create an orgranization - user must be logged in",
+          "summary": "Create a new organization",
+          "tags": [
+            "Organization"
+          ]
+        }
+      },
+      "/organizations/findfirst": {
+        "get": {
+          "description": "PUBLIC - Find the first record from the collection of organizations",
+          "summary": "Find the first record in organization collection",
+          "tags": [
+            "Organization"
+          ]
+        }
+      },
+      "/organizations/count": {
+        "get": {
+          "description": "PUBLIC - Get the count of organizations from collection",
+          "summary": "Find organization by ID",
+          "tags": [
+            "Organization"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "",
+              "deprecated": false,
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "put": {
+          "deprecated": false,
+          "description": "Update a record",
+          "responses": {
+            "200": {
+              "description": "response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Organization"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Update Organization information",
+          "tags": [
+            "Organization"
+          ],
+          "requestBody": {
+            "description": "",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewOrganization"
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "",
+              "deprecated": false,
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "deprecated": false,
+          "description": "Delete a record",
+          "responses": {
+            "200": {
+              "description": "deletes a single record based on the ID supplied",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Delete an organization",
+          "tags": [
+            "Organization"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "",
+              "deprecated": false,
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "/organizations/users": {
+        "post": {
+          "deprecated": false,
+          "description": "Create a new record",
+          "responses": {
+            "200": {
+              "description": "response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "foo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Add a user to an organization's members",
+          "tags": [
+            "Organization"
+          ],
+          "requestBody": {
+            "description": "",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "deprecated": false,
+          "description": "Update a record",
+          "responses": {
+            "200": {
+              "description": "response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "foo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "summary": "Remove a user from organization's members",
+          "tags": [
+            "Organization"
+          ],
+          "requestBody": {
+            "description": "",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "parameters": []
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Organization": {
+          "required": [
+            "id",
+            "title",
+            "description",
+            "website",
+            "location",
+            "owner"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "website": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "jobs": {
+              "type": "array",
+              "items": {
+                "required": [
+                  "id",
+                  "title",
+                  "description"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "users_permissions_user": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "users_permissions_users": {
+              "type": "array",
+              "items": {
+                "required": [
+                  "id",
+                  "username",
+                  "email"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "resetPasswordToken": {
+                    "type": "string"
+                  },
+                  "confirmationToken": {
+                    "type": "string"
+                  },
+                  "confirmed": {
+                    "type": "boolean"
+                  },
+                  "blocked": {
+                    "type": "boolean"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "organization_role": {
+                    "type": "string"
+                  },
+                  "organization": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "owner": {
+              "type": "string"
+            }
+          }
+        },
+        "NewOrganization": {
+          "required": [
+            "title",
+            "description",
+            "website",
+            "location",
+            "owner"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "website": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "jobs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "users_permissions_users": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "owner": {
+              "type": "string"
+            },
+            "created_by": {
+              "type": "string"
+            },
+            "updated_by": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Organization"
+      }
+    ]
+  }

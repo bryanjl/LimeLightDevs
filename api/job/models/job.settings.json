@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "jobs",
   "info": {
-    "name": "Job"
+    "name": "Job",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,6 +19,10 @@
     "description": {
       "type": "richtext",
       "required": true
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
