@@ -28,7 +28,7 @@
         "description": "Development server"
       },
       {
-        "url": "YOUR_STAGING_SERVER",
+        "url": "https://limelightdevelopers.herokuapp.com/",
         "description": "Staging server"
       },
       {

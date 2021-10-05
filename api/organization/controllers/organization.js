@@ -24,14 +24,32 @@ module.exports = {
             return ctx.response.notFound(`Organization ${ctx.request.body.organization} Not Found`);
         }
 
+        //check if there is an email in body and current logged in user is the owner
+        if(ctx.request.body.email && organization.owner != ctx.state.user.email){
+            return ctx.response.badRequest(`You are not the owner of this organization, you can not add other members`);
+        }
+
+        //check if email is supplied in request body
+        let userEmail;
+        (ctx.request.body.email) ? userEmail = ctx.request.body.email : userEmail = ctx.state.user.email;
+        
+
+        //check if user to be registered is already registered with organization
         let usersArr = organization.users_permissions_users;
         usersArr.forEach(user => {
-            if (user.email === ctx.state.user.email){
-                return ctx.response.badRequest(`You are already registered with this organization`);
+            if (user.email === userEmail){
+                return ctx.response.badRequest(`The email ${userEmail} is already a member of this organization`);
             }
         });
+
+        //get user from DB
+        let user = await strapi.query('user', 'users-permissions').findOne({ email: userEmail });
+
+        if(!user) {
+            return ctx.response.notFound(`User with email ${userEmail} not found`);
+        }
         
-        usersArr.push(ctx.state.user);
+        usersArr.push(user);
 
         //update organization with new array of organizational users
         organization = await strapi.query('organization').update({ id: organization.id }, {
