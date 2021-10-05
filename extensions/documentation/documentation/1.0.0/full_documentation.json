@@ -8,7 +8,7 @@
     "contact": {
       "name": "Bryan Lilly",
       "email": "bryanjameslilly@gmail.com",
-      "url": "bryanjameslilly.com"
+      "url": ""
     },
     "license": {
       "name": "Apache 2.0",
@@ -30,7 +30,7 @@
       "description": "Development server"
     },
     {
-      "url": "YOUR_STAGING_SERVER",
+      "url": "https://limelightdevelopers.herokuapp.com",
       "description": "Staging server"
     },
     {
