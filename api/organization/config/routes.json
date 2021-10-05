@@ -39,7 +39,7 @@
       "path": "/organizations",
       "handler": "organization.create",
       "config": {
-        "policies": [],
+        "policies": ["geoCoder"],
         "description": "PRIVATE - Create an orgranization - user must be logged in" 
       }
     },
