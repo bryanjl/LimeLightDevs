@@ -42,13 +42,24 @@ module.exports = {
             }
         });
 
-        //get user from DB
-        let user = await strapi.query('user', 'users-permissions').findOne({ email: userEmail });
 
-        if(!user) {
-            return ctx.response.notFound(`User with email ${userEmail} not found`);
+        //set the employee's role
+        let getRole = await strapi
+            .query('role', 'users-permissions')
+            .findOne({ name: ctx.request.body.role });
+        
+        let userObj = {
+            email: ctx.request.body.email,
+            password: ctx.request.body.password,
+            username: ctx.request.body.username,
+            role: getRole.id,
+            confirmed: true,
+            provider: "local"
         }
         
+        //create user
+        let user = await strapi.plugins['users-permissions'].services.user.add(userObj);
+
         usersArr.push(user);
 
         //update organization with new array of organizational users
